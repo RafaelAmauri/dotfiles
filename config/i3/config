@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -106,11 +106,11 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1  "Browser"
 set $ws2  "Terminals"
-set $ws3  "Steam"
+set $ws3  "Games"
 set $ws4  "Files"
-set $ws5  "5"
-set $ws6  "6"
-set $ws7  "7"
+set $ws5  "Programming"
+set $ws6  "Torrents"
+set $ws7  "VMs"
 set $ws8  "8"
 set $ws9  "Discord"
 set $ws10 "Spotify"
@@ -227,6 +227,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # Compton
 exec_always compton --blur-background --blur-method kawase --blur-strength 20 --opacity-rule 85:'class_g="Termite"' --backend glx
 
+# Pacsystray // tray icon for pulseaudio
+exec pa-applet
+
 # File explorer bind
 bindsym $mod+t exec thunar
 
@@ -236,7 +239,7 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opaci
 
 
 # Wallpaper config
-exec_always feh --bg-scale /home/rafael/Downloads/Wallpapers/1920x1080-165131-iceberg-4k-ultra-hd-wallpaper.jpg
+exec_always feh --bg-scale /home/rafael/Downloads/Wallpapers/33412-4k-minimalist-wallpaper-3840x2160-158074280892541.jpg
 
 
 # Keyboard config
@@ -246,14 +249,27 @@ exec_always setxkbmap -layout br
 for_window [class=".*"] border pixel 1
 
 # Define windows gaps
-gaps inner 15
+gaps inner 50
+
 
 # Only turns gaps on when theres at least one container
 smart_gaps on
 
 # Assignment of applications to workspaces
-assign [class="firefox"] $ws1
-assign [class="Steam"]   $ws3
-assign [class="Thunar"]  $ws4
-assign [class="discord"] $ws9
-assign [class="Spotify"] $ws10 
+assign [class="firefox"]     $ws1
+assign [class="Lutris"]      $ws3
+assign [class="Steam"]       $ws3
+assign [class="Thunar"]      $ws4
+assign [class="code-oss"]    $ws5
+assign [class="qBittorrent"] $ws6
+assign [class="Gnome-boxes"] $ws7
+assign [class="discord"]     $ws9
+assign [class="spotify"]     $ws10 
+assign [class="Spotify"]     $ws10 
+
+# Multi-screen screenshots with scrot
+bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
+
+# OSX-like area selection screenshots
+bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+
