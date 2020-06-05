@@ -111,9 +111,9 @@ set $ws4  "Files"
 set $ws5  "Programming"
 set $ws6  "Torrents"
 set $ws7  "VMs"
-set $ws8  "8"
+set $ws8  "Outros"
 set $ws9  "Discord"
-set $ws10 "Spotify"
+set $ws10 "Gaming"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -233,17 +233,21 @@ exec pa-applet
 # File explorer bind
 bindsym $mod+t exec thunar
 
+# Firefox bind
+bindsym $mod+b exec firefox-developer-edition
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "80" -bw 0 -bc "#002200" -bg "#553fff" -fg "$text-color" -hlbg "$bg-color"
 
 
 # Wallpaper config
-exec_always feh --bg-scale /home/rafael/Downloads/Wallpapers/33412-4k-minimalist-wallpaper-3840x2160-158074280892541.jpg
+exec_always feh --bg-scale /home/rafael/Pictures/patos.jpg
 
+# Transparency for apps in ~/.devilspie
+exec devispie
 
 # Keyboard config
-exec_always setxkbmap -layout br
+exec setxkbmap -layout br
 
 # No border for windows
 for_window [class=".*"] border pixel 1
@@ -264,8 +268,6 @@ assign [class="code-oss"]    $ws5
 assign [class="qBittorrent"] $ws6
 assign [class="Gnome-boxes"] $ws7
 assign [class="discord"]     $ws9
-assign [class="spotify"]     $ws10 
-assign [class="Spotify"]     $ws10 
 
 # Multi-screen screenshots with scrot
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
