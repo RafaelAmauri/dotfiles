@@ -244,7 +244,7 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opaci
 exec_always feh --bg-scale /home/rafael/Pictures/patos.jpg
 
 # Transparency for apps in ~/.devilspie
-exec devispie
+exec devilspie
 
 # Keyboard config
 exec setxkbmap -layout br
