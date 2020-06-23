@@ -19,7 +19,7 @@ If you're using Arch Linux, all these packages are avaliable in the AUR
 ```bash
 git clone https://github.com/RADA77777/dotfiles
 
-mv dotfiles/config/\* $HOME/.config
+mv dotfiles/config/* $HOME/.config
 mv dotfiles/devilspie $HOME/.devilspie
 
 sudo mv "dotfiles/Brightness Adjuster for Xorg/brightness.sh" /bin
