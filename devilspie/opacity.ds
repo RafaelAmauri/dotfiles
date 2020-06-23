@@ -1,0 +1,10 @@
+( if
+( or
+( contains ( window_class ) "code-oss" )
+( contains ( window_class ) "discord" )
+)
+( begin
+( spawn_async (str "transset-df -i " (window_xid) " 0.80" ))
+)
+)
+

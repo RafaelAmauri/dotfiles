@@ -1,0 +1,14 @@
+This file gives a blurred background to any application in your desktop
+
+To add a new application, get the class of the window using 
+
+$ xprop | grep "WM_CLASS(STRING)"
+
+and click on the window. Then, copy the name of the second attibute and paste it on the opacity.ds file (sometimes, windows
+have 2 class names. You need to use the second one)
+
+As you can see in the file, I only use this blurred effect for Discord and VSCode, but you can use it on any application
+
+
+The 0.80 value is responsible for indicating how much opacity you want. I personaly use 80%, but this can be changed
+to any other value

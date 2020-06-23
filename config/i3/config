@@ -176,7 +176,7 @@ bindsym $mod+r mode "resize"
 
 ###################################
 #
-#                 My Configurations
+#                 My Personal Configurations
 #
 ###################################
 
@@ -244,10 +244,10 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opaci
 exec_always feh --bg-scale /home/rafael/Pictures/patos.jpg
 
 # Transparency for apps in ~/.devilspie
-exec devilspie
+exec_always devilspie
 
 # Keyboard config
-exec setxkbmap -layout br
+exec_always setxkbmap -layout br
 
 # No border for windows
 for_window [class=".*"] border pixel 1
