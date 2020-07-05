@@ -1,0 +1,3 @@
+Simple script for updating /boot/grub/grub.cfg
+
+Useful for detecting newer installed kernels and adding them to your grub menu
