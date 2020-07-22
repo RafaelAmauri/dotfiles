@@ -237,7 +237,7 @@ bindsym $mod+t exec thunar
 bindsym $mod+b exec firefox-developer-edition
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "80" -bw 0 -bc "#002200" -bg "#553fff" -fg "$text-color" -hlbg "$bg-color"
+bindsym $mod+d exec rofi -show run
 
 
 # Wallpaper config
