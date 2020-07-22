@@ -1,30 +1,58 @@
 general {
 		output_format = "i3bar"
-		colors = false	
+		colors = true	
 		interval = 1
+
+		color_good = "#00FF00"
+		color_degraded = "#00F7D2"
+		color_bad = "#00FF00"
 }
 
-order += "wireless wlp0s20f0u14"
+// Disabled wireless info because I already use nm-applet
+
+//order += "wireless wlp0s20f0u14"
+
+order += "cpu_usage"
 order += "memory"
 order += "disk /home"
+order += "disk /home/rafael/hd"
 order += "tztime local"
 
 
 wireless wlp0s20f0u14 {
-		format_up = "Connected to %essid at %quality   ip = %ip"
+		format_up = "Connected to %essid ip = %ip"
 		format_down = "Down"
 }
 
-memory {
-		format = "%used RAM used"
-		threshold_degraded = "10%"
-        format_degraded = "%free RAM used"
+
+// shows usage of all cores. If usage is above 40%, text color changes to <color_degraded>. If above 90%, changes to <color_bad>
+cpu_usage {
+	format              =  "Cores = %cpu0 %cpu1 %cpu2 %cpu3"
+	degraded_threshold  =  40
+	max_threshold       =  90
 }
 
+
+// Shows RAM usage. If less than 10% RAM is free, the text color changes to <color_bad>
+memory {
+	format              =  "%used RAM used"
+	threshold_critical  =  "10%"
+}
+
+
+// free space in /home partition
 disk "/home" {
 		format = "/home = %free free"
 }
 
+
+// free space in my external hard drive
+disk "/home/rafael/hd" {
+		format = "HDD = %free free"
+}
+
+
+// local time in my timezone
 tztime local{
 		format = "%d-%m-%Y %H:%M:%S"
 }
