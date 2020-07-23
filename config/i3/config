@@ -181,7 +181,7 @@ bindsym $mod+r mode "resize"
 ###################################
 
 
-set $bg-color             #6f6f6f
+set $bg-color             #FFFFFF
 set $inactive-bg-color    #2d2d2d
 set $text-color           #00ff00
 set $inactive-text-color  #ffffff
@@ -203,16 +203,14 @@ bar {
         status_command i3status --config ~/.config/i3status/config
 		position top
 		separator_symbol "  ||  "
-		font pango:DejaVu Sans Mono 10
-
+		font pango:JetBrainsMono Nerd Font Mono 10
 		
 		colors {
-			background #2d2d2d
+			background #0f0f0f
 			statusline #ffffff
-			separator  #ffff00 
+			separator  #00FF00 
 		}
 }
-
 
 # Lock screen bind
 bindsym $mod+shift+x exec i3lock
@@ -241,10 +239,10 @@ bindsym $mod+d exec rofi -show run
 
 
 # Wallpaper config
-exec_always feh --bg-scale /home/rafael/Pictures/patos.jpg
+exec_always $HOME/.config/feh/set-wallpaper.sh
 
 # Transparency for apps in ~/.devilspie
-exec_always devilspie
+exec_always $HOME/.devilspie/reload-devilspie.sh
 
 # Keyboard config
 exec_always setxkbmap -layout br

@@ -1,11 +1,11 @@
 general {
-		output_format = "i3bar"
-		colors = true	
-		interval = 1
+		output_format  =  "i3bar"
+		colors         =  true	
+		interval       =  1
 
-		color_good = "#00FF00"
-		color_degraded = "#00F7D2"
-		color_bad = "#00FF00"
+		color_good      =  "#00FF00"
+		color_degraded  =  "#00F7D2"
+		color_bad       =  "#00FF00"
 }
 
 // Disabled wireless info because I already use nm-applet
@@ -25,16 +25,17 @@ wireless wlp0s20f0u14 {
 }
 
 
-// shows usage of all cores. If usage is above 40%, text color changes to <color_degraded>. If above 90%, changes to <color_bad>
+// shows usage of all cores. If usage is above <degraded_threshold>%, text color changes to <color_degraded>. If above <max_threshold>%, changes to <color_bad>
 cpu_usage {
 	format              =  "Cores = %cpu0 %cpu1 %cpu2 %cpu3"
-	degraded_threshold  =  40
+	degraded_threshold  =  70
 	max_threshold       =  90
 }
 
 
 // Shows RAM usage. If less than 10% RAM is free, the text color changes to <color_bad>
 memory {
+	memory_used_method  =  memavailable
 	format              =  "%used RAM used"
 	threshold_critical  =  "10%"
 }
