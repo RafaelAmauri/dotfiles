@@ -1,0 +1,14 @@
+nautilus
+transset-df
+i3-gaps
+compton-tryone-git
+rofi
+feh
+devilspie
+scrot
+steam
+vscodium-bin
+discord
+firefox-developer-edition
+qbittorrent
+pa-applet-git

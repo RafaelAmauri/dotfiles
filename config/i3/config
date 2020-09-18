@@ -229,7 +229,7 @@ exec_always compton --blur-background --blur-method kawase --blur-strength 20 --
 exec pa-applet
 
 # File explorer bind
-bindsym $mod+t exec thunar
+bindsym $mod+t exec nautilus
 
 # Firefox bind
 bindsym $mod+b exec firefox-developer-edition
@@ -258,14 +258,14 @@ gaps inner 50
 smart_gaps on
 
 # Assignment of applications to workspaces
-assign [class="firefox"]     $ws1
-assign [class="Lutris"]      $ws3
-assign [class="Steam"]       $ws3
-assign [class="Thunar"]      $ws4
-assign [class="code-oss"]    $ws5
-assign [class="qBittorrent"] $ws6
-assign [class="Gnome-boxes"] $ws7
-assign [class="discord"]     $ws9
+assign [class="firefox"]                 $ws1
+assign [class="Lutris"]                  $ws3
+assign [class="Steam"]                   $ws3
+assign [class="Org.gnome.Nautilus"]      $ws4
+assign [class="VSCodium"]                $ws5
+assign [class="qBittorrent"]             $ws6
+assign [class="Gnome-boxes"]             $ws7
+assign [class="discord"]                 $ws9
 
 # Multi-screen screenshots with scrot
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens

@@ -2,17 +2,13 @@
 
 The dotfiles for my personal i3 gaps configuration
 
-## Requires
+## My software
 
-* i3-gaps (https://github.com/Airblader/i3)
-* compton-tryone-git (https://github.com/tryone144/compton)
-* rofi (https://github.com/davatorium/rofi)
-* feh
-* devilspie 
-* transset-df (https://github.com/KaOS-Community-Packages/transset-df)
-* scrot
+To install software from my list, use:
 
-If you're using Arch Linux, all these packages are avaliable in the AUR
+```bash
+yay -S - < software_list.txt
+```
 
 ## Installation
 
