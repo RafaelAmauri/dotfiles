@@ -4,7 +4,7 @@ The dotfiles for my personal i3 gaps configuration
 
 ## My software
 
-To install software from my list, use:
+To install the software from my personal list, use:
 
 ```bash
 yay -S - < software_list.txt
