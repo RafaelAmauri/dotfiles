@@ -12,3 +12,4 @@ discord
 firefox-developer-edition
 qbittorrent
 pa-applet-git
+spotify
