@@ -1,3 +1,3 @@
 A collection of a few useful scripts for making my life easier
 
-You can copy only the ones you want, or use the copy-all.sh script to move all of them to /bin
+You can copy only the ones you want, or use copy-all.sh to move all of them to $HOME/scripts

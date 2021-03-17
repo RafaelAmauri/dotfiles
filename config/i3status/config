@@ -43,13 +43,13 @@ memory {
 
 // free space in /home partition
 disk "/home" {
-		format = "/home = %free free"
+		format = "/home = %avail free"
 }
 
 
 // free space in my external hard drive
 disk "/home/rafael/hd" {
-		format = "HDD = %free free"
+		format = "HDD = %avail free"
 }
 
 

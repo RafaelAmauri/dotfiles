@@ -1,10 +1,12 @@
-echo "Give me permission to move the scripts to the /bin folder"
-sleep 3
+mkdir $HOME/scripts
 
 for x in *
 do
     if [ -d "${x}" ]
     then
-	sudo cp "${x}"/* /bin/
+	cp "${x}"/* $HOME/scripts
     fi
 done
+
+echo "Moved scrips to ${HOME}/scripts!"
+sleep 2
