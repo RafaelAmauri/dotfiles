@@ -109,9 +109,9 @@ set $ws2  "Terminals"
 set $ws3  "Games"
 set $ws4  "Files"
 set $ws5  "Programming"
-set $ws6  "Torrents"
-set $ws7  "VMs"
-set $ws8  "Outros"
+set $ws6  "Outros1"
+set $ws7  "Outros2"
+set $ws8  "Outros3"
 set $ws9  "Discord"
 set $ws10 "Gaming"
 
@@ -257,7 +257,7 @@ exec_always setxkbmap -layout br
 for_window [class=".*"] border pixel 1
 
 # Define windows gaps
-gaps inner 50
+gaps inner 20
 
 # Disable screensaver
 exec xset s off

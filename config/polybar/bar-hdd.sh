@@ -1,1 +1,1 @@
-echo "$(df -H /dev/sda1 | tail -n +2 | cut -d " " -f 12) free in HDD"
+echo "$(df -h --output=avail /dev/sda1 | tail -n1) free on HDD"

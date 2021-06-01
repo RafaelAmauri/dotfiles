@@ -1,7 +1,7 @@
 [colors]
-background = #141414
+background = #020202
 bg3 = #665c54
-foreground = #C6C6C6
+foreground = #FC0000
 foreground-alt = #a4a4a4
 red = #cc241d
 green = #98971a
@@ -25,10 +25,10 @@ primary = ${xrdb:color1:#222}
 secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
-[bar/top]
-monitor = DisplayPort-0
+[bar/top2]
+monitor = HDMI-A-0
 width = 100%
-height = 28
+height = 30
 radius = 0
 fixed-center = true
 
@@ -54,18 +54,10 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-;font-0 = JetBrains Mono NL,JetBrains Mono NL Medium:style=Medium,Regular:pixelsize=10;4
-;font-0 = Inter:style=regular:size=10;3
-;font-1 = Font Awesome 5 Pro:style=Solid:pixelsize=9;3
-;font-2 = Weather Icons:size=12;1
-;font-3 = Font Awesome 5 Pro:pixelsize=9;3
-;font-4 = Font Awesome 5 Brands:pixelsize=9;2
-;font-5 = Material Design Icons:pixelsize=15;5
 
-font-0 = Inter:style=regular:size=10;3
+font-0 = siji:style=Medium:pixelsize=11;1
 font-1 = Font Awesome 5 Pro:style=Solid:pixelsize=9;3
-;font-2 = Font Awesome 5 Pro:pixelsize=9;3
-font-2 = Font Awesome 5 Brands:pixelsize=9;2
+font-2 = FontAwesome:style=Regular;5
 font-3 = Material Design Icons:pixelsize=15;5
 
 ;;;;;;;;;;;;;;;;;;
@@ -73,7 +65,54 @@ font-3 = Material Design Icons:pixelsize=15;5
 ;;;;;;;;;;;;;;;;;;
 
 modules-left = i3
-modules-right = diskhome diskroot cpu memory hour date
+modules-right = diskhome diskroot cpu memory hour date pulseaudio-control
+;modules-right = diskhome diskroot cpu memory weather hour date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[bar/top]
+monitor = DP-2
+width = 100%
+height = 30
+radius = 0
+fixed-center = true
+
+tray-position = right
+tray-padding = 10
+
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground-alt}
+override-redirect = false
+line-size = 0
+line-color = #0ff
+
+border-color = #000000
+border-bottom-size = 0
+border-top-size = 0
+border-bottom-color = #141414
+border-top-color = #141414
+
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+
+font-0 = siji:style=Medium:pixelsize=11;1
+font-1 = Font Awesome 5 Pro:style=Solid:pixelsize=9;3
+font-2 = FontAwesome:style=Regular;5
+font-3 = Material Design Icons:pixelsize=15;5
+
+;;;;;;;;;;;;;;;;;;
+;; MODULES USED ;;
+;;;;;;;;;;;;;;;;;;
+
+modules-left = i3
+modules-right = diskhome diskroot cpu memory hour date pulseaudio-control
 ;modules-right = diskhome diskroot cpu memory weather hour date
 
 cursor-click = pointer
@@ -85,23 +124,41 @@ cursor-scroll = ns-resize
 ;;;;;;;;;;;;;
 
 
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --sink-nickname "Speakers" --sink-nickname "Headphones" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
+
 [module/diskroot]
 type = custom/script
-interval = 90
+interval = 3
 
 exec = ~/.config/polybar/bar-hdd.sh 1 "/"
-format-prefix = " | "
+format-prefix = " || "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-padding = 2
-click-left = bar-disk 2
-click-right = bar-disk 3
+label-active-font = 2
 
 
 [module/diskhome]
 type = custom/script
-interval = 90
-format-prefix = " | "
+interval = 3
+format-prefix = " || "
 format-padding = 2
 exec = ~/.config/polybar/bar-ssd.sh 1 /home
 format-foreground = ${colors.foreground}
@@ -110,25 +167,10 @@ format-background = ${colors.background}
 
 [module/weather]
 type = custom/script
-format-prefix = " | "
+format-prefix = " || "
 format-padding = 2
 exec = ~/.config/polybar/weather.sh
 interval = 2000
-
-
-;;;;;;;;;;;;;
-;; XWINDOW ;;
-;;;;;;;;;;;;;
-[module/xwindow]
-type = internal/xwindow
-label = %title%
-label-empty = 
-label-maxlen = 100
-format-foreground = ${colors.foreground}
-format-padding = 4
-;format-prefix = 
-;format-prefix-padding = 4
-;format-prefix-foreground = ${xrdb:color3}
 
 
 ;;;;;;;;;;
@@ -139,7 +181,7 @@ type = internal/date
 interval = 1
 date = %H:%M:%S %p
 format = <label>
-format-prefix = " | "
+format-prefix = " || "
 format-padding = 2
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
@@ -153,7 +195,7 @@ label-padding = 2
 type = internal/date
 interval = 1
 format-foreground = ${colors.foreground}
-format-prefix = " | "
+format-prefix = " || "
 format-padding = 2
 format-background = ${colors.background}
 date = %a, %d %b %Y%
@@ -167,14 +209,14 @@ label-padding = 2
 ;;;;;;;;
 [module/i3]
 type = internal/i3
-pin-workspaces = false
+pin-workspaces = true
 strip-wsnumbers = true
 index-sort = true
 enable-click = true
-enable-scroll = false
+enable-scroll = true
 wrapping-scroll = false
 reverse-scroll = false
-fuzzy-match = true
+fuzzy-match = false
 
 ws-icon-0 = 1;  Browser
 ws-icon-1 = 2;  Terminal
@@ -185,7 +227,7 @@ ws-icon-5 = 6;  Torrents
 ws-icon-6 = 7;  Others
 ws-icon-7 = 8;  Others
 ws-icon-8 = 9;  Others
-;ws-icon-9 = 10s;  Gaming
+ws-icon-9 = 10s;  Gaming
 
 format = <label-state> <label-mode>
 
@@ -194,13 +236,13 @@ label-mode-padding = 4
 label-mode-background = ${colors.background}
 
 label-focused = %name%
-label-focused-foreground = ${colors.yellow}
-label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
 label-focused-underline = #c6c6c6
 label-focused-padding = 4
 
 label-unfocused =  %name%
-label-unfocused-foreground = #737f7f
+label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background}
 label-unfocused-underline = ${colors.background}
 label-unfocused-padding = 4
@@ -210,12 +252,12 @@ label-visible-underline = #15539E
 label-visible-padding = 4
 
 label-urgent =  %name%
-label-urgent-foreground = ${colors.red}
-label-urgent-background = ${colors.background}
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.foreground}
 label-urgent-underline = ${colors.green}
 label-urgent-padding = 4
 
-
+ 
 label-separator = |
 label-separator-foreground = #737f7f
 
@@ -229,16 +271,16 @@ type = internal/cpu
 interval = 1
 format-foreground = ${colors.foreground}
 format-padding = 2
-format-prefix = " | "
+format-prefix = " ||   "
 format = <label>
-label = CPU cores: %percentage-cores%
+label = CPU usage: %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 1
 format-foreground = ${colors.foreground}
 format-padding = 2
-format-prefix = " | "
+format-prefix = " || " 
 format-underline = #4bffdc
-label = RAM used: %percentage_used%%
+label = RAM: %percentage_used%% used
 label-padding = 2
