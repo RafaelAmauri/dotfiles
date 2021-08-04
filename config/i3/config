@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $monitor1 DP-1
+set $monitor2 DP-2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -104,6 +106,7 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+set $ws1  "Browser"
 set $ws1  "Browser"
 set $ws2  "Terminals"
 set $ws3  "Games"
@@ -205,7 +208,6 @@ hide_edge_borders both
 #		separator_symbol "  ||  "
 #		font pango:JetBrainsMono Nerd Font Mono 10
 		
-#		colors {
 #			background #0f0f0f
 #			statusline #ffffff
 #			separator  #00FF00 
@@ -213,7 +215,7 @@ hide_edge_borders both
 #}
 
 # Start polybar
-exec_always ~/.config/polybar/bar.sh
+exec_always $HOME/.config/polybar/start_polybar.sh
 
 # Lock screen bind
 bindsym $mod+shift+x exec i3lock
@@ -260,7 +262,10 @@ for_window [class=".*"] border pixel 1
 gaps inner 20
 
 # Disable screensaver
-exec xset s off
+exec_always xset -dpms
+
+# Set refresh rate to 75Hz
+exec_always xrandr --output $monitor1 --mode 2560x1440 --rate 165 --primary --output $monitor2 --mode 1920x1080 --rate 75 --left-of $monitor1
 
 # Only turns gaps on when theres at least one container
 smart_gaps on
@@ -280,4 +285,8 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~
 
 # OSX-like area selection screenshots
 bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+
+#move container to main monitor
+bindsym $mod+x move container to output DP-2
+bindsym $mod+c move container to output DP-1
 
