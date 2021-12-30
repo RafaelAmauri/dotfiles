@@ -26,7 +26,7 @@ secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
 [bar/top]
-monitor = DP-1
+monitor = DisplayPort-0
 width = 100%
 height = 30
 radius = 0
@@ -65,7 +65,7 @@ font-3 = Material Design Icons:pixelsize=15;5
 ;;;;;;;;;;;;;;;;;;
 
 modules-left = i3
-modules-right = diskhome diskroot cpu memory hour date pulseaudio-control
+modules-right = diskhome diskhdd1 diskhdd2 cpu memory hour date pulseaudio-control
 ;modules-right = diskhome diskroot cpu memory weather hour date
 
 cursor-click = pointer
@@ -73,7 +73,7 @@ cursor-scroll = ns-resize
 
 
 [bar/top2]
-monitor = DP-2
+monitor = DisplayPort-1
 width = 100%
 height = 30
 radius = 0
@@ -112,7 +112,7 @@ font-3 = Material Design Icons:pixelsize=15;5
 ;;;;;;;;;;;;;;;;;;
 
 modules-left = i3
-modules-right = diskhome diskroot cpu memory hour date pulseaudio-control
+modules-right = diskhome diskhdd1 diskhdd2 cpu memory hour date pulseaudio-control
 ;modules-right = diskhome diskroot cpu memory weather hour date
 
 cursor-click = pointer
@@ -143,17 +143,27 @@ scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
 
 
-[module/diskroot]
+[module/diskhdd1]
 type = custom/script
 interval = 3
 
-exec = ~/.config/polybar/bar-hdd.sh 1 "/"
+exec = ~/.config/polybar/bar-hdd1.sh 1 "/"
 format-prefix = " || "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-padding = 2
 label-active-font = 2
 
+[module/diskhdd2]
+type = custom/script
+interval = 3
+
+exec = ~/.config/polybar/bar-hdd2.sh 1 "/"
+format-prefix = " || "
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-padding = 2
+label-active-font = 2
 
 [module/diskhome]
 type = custom/script
