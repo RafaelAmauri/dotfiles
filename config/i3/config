@@ -10,8 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $monitor1 DisplayPort-0
-set $monitor2 DisplayPort-1
+set $monitor1 DisplayPort-1
+set $monitor2 DisplayPort-2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -226,8 +226,8 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Compton
-exec_always compton --blur-background --blur-method kawase --blur-strength 20 --opacity-rule 85:'class_g="Termite"' --backend glx
+# Picom
+exec_always picom --config ~/.config/picom/picom.conf --experimental-backends --backend glx
 
 # Pacsystray // tray icon for pulseaudio
 exec pa-applet
@@ -235,13 +235,12 @@ exec pa-applet
 # File explorer bind
 bindsym $mod+t exec nautilus
 
-# Firefox bind
-bindsym $mod+b exec waterfox-g3
+# Browser bind
+bindsym $mod+b exec chromium
 exec_always mkdir /tmp/navegador
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
-
 
 # Wallpaper config
 exec_always $HOME/.config/feh/set-wallpaper.sh
@@ -271,7 +270,7 @@ exec_always xrandr --output $monitor1 --mode 2560x1440 --rate 165 --primary --ou
 smart_gaps on
 
 # Assignment of applications to workspaces
-assign [class="Waterfox"]                $ws1
+assign [class="Chromium"]                $ws1
 assign [class="Lutris"]                  $ws3
 assign [class="Steam"]                   $ws3
 assign [class="Org.gnome.Nautilus"]      $ws4

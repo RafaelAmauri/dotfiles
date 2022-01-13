@@ -1,1 +1,1 @@
-feh --bg-scale $HOME/.config/feh/floresta.jpg
+feh --bg-scale $HOME/.config/feh/praia.jpg

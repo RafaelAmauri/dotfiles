@@ -1,0 +1,3 @@
+awesome-terminal-fonts
+noto-fonts-emoji
+noto-fonts

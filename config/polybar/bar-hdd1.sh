@@ -1,1 +1,1 @@
-echo "$(df -h --output=avail /dev/sdb1 | tail -n1) free on HDD1"
+echo "🖴  $(df -h --output=avail /dev/sdb1 | tail -n1)  /  $(df -h --output=size /dev/sdb1 | tail -n1)"

@@ -1,12 +1,12 @@
 [colors]
-background = #020202
+background = #0a0b0c
 bg3 = #665c54
-foreground = #FC0000
+foreground = #1085ea
 foreground-alt = #a4a4a4
 red = #cc241d
 green = #98971a
 yellow = #d79921
-blue = #458588
+blue = #1085ea
 purple = #b16286
 aqua = #689d6a
 gray = #928374
@@ -26,9 +26,9 @@ secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
 [bar/top]
-monitor = DisplayPort-0
+monitor = DisplayPort-1
 width = 100%
-height = 30
+height = 40
 radius = 0
 fixed-center = true
 
@@ -54,28 +54,24 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-
-font-0 = siji:style=Medium:pixelsize=11;1
-font-1 = Font Awesome 5 Pro:style=Solid:pixelsize=9;3
-font-2 = FontAwesome:style=Regular;5
-font-3 = Material Design Icons:pixelsize=15;5
+font-0 = NimbusSans-Regular:pixelsize=12
+font-1 = Noto Sans Symbols2:pixelsize=15
 
 ;;;;;;;;;;;;;;;;;;
 ;; MODULES USED ;;
 ;;;;;;;;;;;;;;;;;;
 
 modules-left = i3
-modules-right = diskhome diskhdd1 diskhdd2 cpu memory hour date pulseaudio-control
-;modules-right = diskhome diskroot cpu memory weather hour date
+modules-right = diskhome diskhdd1 diskhdd2 cpu memory hour date pulseaudio-control4
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 
 [bar/top2]
-monitor = DisplayPort-1
+monitor = DisplayPort-2
 width = 100%
-height = 30
+height = 40
 radius = 0
 fixed-center = true
 
@@ -101,11 +97,9 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
+font-0 = NimbusSans-Regular:pixelsize=10
+font-1 = Noto Sans Symbols2:pixelsize=15
 
-font-0 = siji:style=Medium:pixelsize=11;1
-font-1 = Font Awesome 5 Pro:style=Solid:pixelsize=9;3
-font-2 = FontAwesome:style=Regular;5
-font-3 = Material Design Icons:pixelsize=15;5
 
 ;;;;;;;;;;;;;;;;;;
 ;; MODULES USED ;;
@@ -113,7 +107,6 @@ font-3 = Material Design Icons:pixelsize=15;5
 
 modules-left = i3
 modules-right = diskhome diskhdd1 diskhdd2 cpu memory hour date pulseaudio-control
-;modules-right = diskhome diskroot cpu memory weather hour date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -127,15 +120,17 @@ cursor-scroll = ns-resize
 [module/pulseaudio-control]
 type = custom/script
 tail = true
-format-underline = ${colors.cyan}
-label-padding = 2
-label-foreground = ${colors.foreground}
+format-underline = ${colors.foreground}
+format-padding = 3
+label-padding = 3
+label-foreground = ${colors.blue}
+label-background = ${colors.background}
 
 # Icons mixed from Font Awesome 5 and Material Icons
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --sink-nickname "Speakers" --sink-nickname "Headphones" listen
+exec = pulseaudio-control --icons-volume "🔈,🔉,🔊" --icon-muted "🔇" --sink-nickname "Speakers" --sink-nickname "Headphones" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
 click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
@@ -145,31 +140,34 @@ scroll-down = pulseaudio-control --volume-max 130 down
 
 [module/diskhdd1]
 type = custom/script
-interval = 3
+interval = 10
 
 exec = ~/.config/polybar/bar-hdd1.sh 1 "/"
-format-prefix = " || "
+#format-prefix = " || "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-format-padding = 2
+format-padding = 3
+label-padding = 3
 label-active-font = 2
 
 [module/diskhdd2]
 type = custom/script
-interval = 3
+interval = 10
 
 exec = ~/.config/polybar/bar-hdd2.sh 1 "/"
-format-prefix = " || "
+#format-prefix = " || "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-format-padding = 2
+format-padding = 3
+label-padding = 3
 label-active-font = 2
 
 [module/diskhome]
 type = custom/script
-interval = 3
-format-prefix = " || "
-format-padding = 2
+interval = 10
+#format-prefix = " || "
+format-padding = 3
+label-padding = 3
 exec = ~/.config/polybar/bar-ssd.sh 1 /home
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
@@ -177,8 +175,9 @@ format-background = ${colors.background}
 
 [module/weather]
 type = custom/script
-format-prefix = " || "
-format-padding = 2
+#format-prefix = " || "
+format-padding = 3
+label-padding = 3
 exec = ~/.config/polybar/weather.sh
 interval = 2000
 
@@ -191,12 +190,12 @@ type = internal/date
 interval = 1
 date = %H:%M:%S %p
 format = <label>
-format-prefix = " || "
-format-padding = 2
+#format-prefix = " || "
+format-padding = 3
+label-padding = 3
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 label = "%date%"
-label-padding = 2
 
 ;;;;;;;;;;;
 ;;  DATE ;;
@@ -205,13 +204,14 @@ label-padding = 2
 type = internal/date
 interval = 1
 format-foreground = ${colors.foreground}
-format-prefix = " || "
-format-padding = 2
+#format-prefix = " || "
+format-padding = 3
+label-padding = 3
 format-background = ${colors.background}
 date = %a, %d %b %Y%
 format = <label>
 label = "%date%"
-label-padding = 2
+
 
 
 ;;;;;;;;
@@ -280,17 +280,19 @@ label-separator-foreground = #737f7f
 type = internal/cpu
 interval = 1
 format-foreground = ${colors.foreground}
-format-padding = 2
-format-prefix = " ||   "
+format-padding = 3
+label-padding = 3
+#format-prefix = " || "
 format = <label>
-label = CPU usage: %percentage%%
+label =   🎚️  CPU usage: %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 1
 format-foreground = ${colors.foreground}
-format-padding = 2
-format-prefix = " || " 
+format-background = ${colors.background}
+format-padding = 3
+label-padding = 3
+#format-prefix = " || " 
 format-underline = #4bffdc
-label = RAM: %percentage_used%% used
-label-padding = 2
+label = 🗄️  RAM: %percentage_used%% used
