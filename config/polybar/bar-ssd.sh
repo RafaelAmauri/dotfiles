@@ -1,1 +1,1 @@
-echo "🖴  $(df -h --output=avail /dev/nvme0n1p3 | tail -n1)  /  $(df -h --output=size /dev/nvme0n1p3 | tail -n1)"
+echo "$(df -h --output=avail /dev/nvme0n1p3 | tail -n1)  /  $(df -h --output=size /dev/nvme0n1p3 | tail -n1)"

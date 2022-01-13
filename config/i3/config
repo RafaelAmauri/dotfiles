@@ -286,6 +286,5 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~
 bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 
 #move container to main monitor
-bindsym $mod+x move container to output DP-2
-bindsym $mod+c move container to output DP-1
-
+bindsym $mod+c move container to output $monitor1
+bindsym $mod+x move container to output $monitor2
