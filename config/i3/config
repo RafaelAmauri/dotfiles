@@ -107,7 +107,6 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1  "Browser"
-set $ws1  "Browser"
 set $ws2  "Terminals"
 set $ws3  "Games"
 set $ws4  "Files"
@@ -230,13 +229,13 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always picom --config ~/.config/picom/picom.conf --experimental-backends --backend glx
 
 # Pacsystray // tray icon for pulseaudio
-exec pa-applet
+# exec pa-applet
 
 # File explorer bind
 bindsym $mod+t exec nautilus
 
 # Browser bind
-bindsym $mod+b exec chromium
+bindsym $mod+b exec librewolf
 exec_always mkdir /tmp/navegador
 
 # start dmenu (a program launcher)
@@ -264,13 +263,13 @@ gaps inner 20
 exec_always xset -dpms
 
 # Set refresh rate to 75Hz
-exec_always xrandr --output $monitor1 --mode 2560x1440 --rate 165 --primary --output $monitor2 --mode 1920x1080 --rate 75 --left-of $monitor1
+exec_always xrandr --output $monitor1 --mode 2560x1440 --rate 165 --scale 1x1 --primary --output $monitor2 --mode 1920x1080 --rate 75 --scale 1x1 --left-of $monitor1
 
 # Only turns gaps on when theres at least one container
 smart_gaps on
 
 # Assignment of applications to workspaces
-assign [class="Chromium"]                $ws1
+assign [class="librewolf"]               $ws1
 assign [class="Lutris"]                  $ws3
 assign [class="Steam"]                   $ws3
 assign [class="Org.gnome.Nautilus"]      $ws4
@@ -284,6 +283,8 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~
 
 # OSX-like area selection screenshots
 bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+
+for_window [instance="Origin"] floating enable
 
 #move container to main monitor
 bindsym $mod+c move container to output $monitor1

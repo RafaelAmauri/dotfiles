@@ -130,7 +130,7 @@ label-background = ${colors.background}
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume "🔈,🔉,🔊" --icon-muted "🔇" --sink-nickname "Speakers" --sink-nickname "Headphones" listen
+exec = pulseaudio-control --icons-volume "🔈,🔉,🔊" --icon-muted "🔇" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
 click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
