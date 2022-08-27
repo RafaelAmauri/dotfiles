@@ -12,5 +12,4 @@ alias la='ls -a --color=auto'
 export PATH=${PATH}:/home/rafael/scripts
 export EDITOR=vim
 
-PS1="\[$(tput bold)\]\[\033[38;5;51m\][\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]@\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\H\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
-
+export PS1="\[$(tput bold)\]\[\033[38;5;51m\][\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]@\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\H\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;48m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;51m\]\w\[$(tput sgr0)\]\[\033[38;5;6m\] \[$(tput sgr0)\]\[\033[38;5;51m\]>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
