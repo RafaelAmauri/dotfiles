@@ -10,8 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $monitor1 DisplayPort-1
-set $monitor2 DisplayPort-2
+set $monitor1 DP-0
+set $monitor2 DP-4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -225,8 +225,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Set resolutions and refresh rate
+exec_always xrandr --output $monitor1 --primary --mode 3440x1440 --rate 160 --scale 1x1 --right-of $monitor2 --output $monitor2 --mode 1920x1080 --rate 75 --scale 1x1
+
+exec_always nvidia-settings --load-config-only
+
 # Picom
-exec_always picom --config ~/.config/picom/picom.conf --experimental-backends --backend glx
+exec_always picom --config ~/.config/picom/picom.conf --backend glx 
 
 # Pacsystray // tray icon for pulseaudio
 # exec pa-applet
@@ -250,9 +255,6 @@ exec_always $HOME/.devilspie/reload-devilspie.sh
 # Disable screensaver
 exec /bin/disable_screensaver.sh 
 
-# Keyboard config
-exec_always setxkbmap -layout br
-
 # No border for windows
 for_window [class=".*"] border pixel 1
 
@@ -262,11 +264,9 @@ gaps inner 20
 # Disable screensaver
 exec_always xset -dpms
 
-# Set refresh rate to 75Hz
-exec_always xrandr --output $monitor1 --mode 2560x1440 --rate 165 --scale 1x1 --primary --output $monitor2 --mode 1920x1080 --rate 75 --scale 1x1 --left-of $monitor1
-
-# Only turns gaps on when theres at least one container
 smart_gaps on
+
+exec_always setxkbmap -layout br
 
 # Assignment of applications to workspaces
 assign [class="librewolf"]               $ws1
