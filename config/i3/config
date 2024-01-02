@@ -231,7 +231,7 @@ exec_always xrandr --output $monitor1 --primary --mode 3440x1440 --rate 160 --sc
 exec_always nvidia-settings --load-config-only
 
 # Picom
-exec_always picom --config ~/.config/picom/picom.conf --backend glx 
+exec_always picom --config ~/.config/picom/picom.conf --backend xrender 
 
 # Pacsystray // tray icon for pulseaudio
 # exec pa-applet
